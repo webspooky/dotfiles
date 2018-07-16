@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/kasper/Dev'
+let g:netrw_dirhist_2='/home/kasper/Dev/clientonline'
+let g:netrw_dirhist_3='/home/kasper/Dev/clientonline/build'
+let g:netrw_dirhist_4='/home/kasper/Dev/clientonline/build/codeception'
+let g:netrw_dirhist_5='/home/kasper/.zsh'

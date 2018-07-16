@@ -1,0 +1,99 @@
+bu-ansible() {
+  if [ -f ./ansible-setenv.sh ]
+  then
+    source ./ansible-setenv.sh
+    docker run \
+      --rm \
+      -it \
+      --name bu-ansible \
+	    --volume ${PWD}:${PWD}:ro \
+      --volume ${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
+    	--workdir ${PWD} \
+      --env AZURE_CLIENT_ID \
+      --env AZURE_SECRET \
+      --env AZURE_SUBSCRIPTION_ID \
+      --env AZURE_TENANT \
+      bu/ansible ansible --user=$(echo $USER) "$@"
+    unset AZURE_CLIENT_ID
+    unset AZURE_SECRET
+    unset AZURE_SUBSCRIPTION_ID
+    unset AZURE_TENANT
+  else
+    echo "ERROR: 'ansible-setenv.sh' not found in current directory"
+  fi
+}
+
+bu-ansible-playbook() {
+  if [ -f ./ansible-setenv.sh ]
+  then
+    source ./ansible-setenv.sh
+    docker run \
+      --rm \
+      -it \
+      --name bu-ansible \
+	    --volume ${PWD}:${PWD}:ro \
+      --volume ${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
+    	--workdir ${PWD} \
+      --env AZURE_CLIENT_ID \
+      --env AZURE_SECRET \
+      --env AZURE_SUBSCRIPTION_ID \
+      --env AZURE_TENANT \
+      bu/ansible ansible-playbook --user=$(echo $USER) "$@"
+    unset AZURE_CLIENT_ID
+    unset AZURE_SECRET
+    unset AZURE_SUBSCRIPTION_ID
+    unset AZURE_TENANT
+  else
+    echo "ERROR: 'ansible-setenv.sh' not found in current directory"
+  fi
+}
+
+bu-ansible-playbook-admin() {
+  if [ -f ./ansible-setenv.sh ]
+  then
+    source ./ansible-setenv.sh
+    docker run \
+      --rm \
+      -it \
+      --name bu-ansible \
+	    --volume ${PWD}:${PWD}:ro \
+      --volume ${HOME}/.ssh/buadmin_rsa:/root/.ssh/id_rsa:ro \
+    	--workdir ${PWD} \
+      --env AZURE_CLIENT_ID \
+      --env AZURE_SECRET \
+      --env AZURE_SUBSCRIPTION_ID \
+      --env AZURE_TENANT \
+      bu/ansible ansible-playbook --user=$(echo $USER) "$@"
+    unset AZURE_CLIENT_ID
+    unset AZURE_SECRET
+    unset AZURE_SUBSCRIPTION_ID
+    unset AZURE_TENANT
+  else
+    echo "ERROR: 'ansible-setenv.sh' not found in current directory"
+  fi
+}
+
+bu-ansible-playbook-admin() {
+  if [ -f ./ansible-setenv.sh ]
+  then
+    source ./ansible-setenv.sh
+    docker run \
+      --rm \
+      -it \
+      --name bu-ansible \
+	    --volume ${PWD}:${PWD}:ro \
+      --volume ${HOME}/.ssh/buadmin_rsa:/root/.ssh/id_rsa:ro \
+    	--workdir ${PWD} \
+      --env AZURE_CLIENT_ID \
+      --env AZURE_SECRET \
+      --env AZURE_SUBSCRIPTION_ID \
+      --env AZURE_TENANT \
+      bu/ansible ansible-playbook --user=buadmin "$@"
+    unset AZURE_CLIENT_ID
+    unset AZURE_SECRET
+    unset AZURE_SUBSCRIPTION_ID
+    unset AZURE_TENANT
+  else
+    echo "ERROR: 'ansible-setenv.sh' not found in current directory"
+  fi
+}
